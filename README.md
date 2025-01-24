@@ -72,10 +72,14 @@ The project consists of the following components:
 
 ## Key Features
 
-- **Independent Development**: Each microfrontend can be developed and deployed independently, allowing teams to work in parallel and choose the best tools for their specific needs.
-- **Shared Components and Dependencies**: Common components and dependencies are shared across microfrontends to reduce duplication and ensure consistency.
-- **Runtime Integration**: Module Federation enables runtime integration of microfrontends.
-- **Centralized State Management**: The host app manages global state and routing. The design principle is that the microfrontends communicate through eventing, where application state for each is hydrated using the backend. That is, the microfrontends are loosely coupled and don't share presentation state. Then, each microfrontend can handle its application state using different tools like pinia for Vue or redux for react.
+- **Container-Based Architecture**: Each component runs in its own Docker container, providing isolation and independent scaling capabilities.
+- **NGINX Routing**: Centralized request routing ensures seamless integration between microfrontends.
+- **Independent Development**: Each microfrontend can be developed and deployed independently.
+- **Framework Flexibility**: Different frameworks (React, Vue) are used based on team preferences and requirements.
+- **Runtime Integration**: Handled by the host app
+- **Global State Management**: The host app manages global state and routing. The design principle is that the microfrontends communicate through eventing, where application state for each is hydrated using the backend. That is, the microfrontends are loosely coupled and don't share presentation state. Then, each microfrontend can handle its application state using different tools like pinia for Vue or redux for react.
+- **Shared Components and Dependencies**: Common components and dependencies are shared across microfrontends to reduce duplication and ensure consistency.- 
+
 
 ## Installation and Setup
 
@@ -104,4 +108,9 @@ This command will build the Docker images for each service defined in the docker
 - nginx: Acts as a reverse proxy to route requests to the appropriate services.
 - (still To be done) shared-components: Contains shared components used by other microfrontends.
 
+# References
 
+- Microfrontends fundamentals: https://martinfowler.com/articles/micro-frontends.html
+- Tools:
+    - https://lit.dev/
+    - https://vite.dev/
