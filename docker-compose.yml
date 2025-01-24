@@ -1,0 +1,80 @@
+  version: '3.8'
+
+  services:
+    host-app:
+      container_name: host-app
+      build: 
+        context: ./host-app
+        dockerfile: Dockerfile
+      expose:
+        - "80"
+      networks:
+        - shop-network
+      environment:
+        - ASPNETCORE_URLS=http://+:80
+        - ASPNETCORE_ENVIRONMENT=Development
+        
+    shared-components:
+      container_name: shared-components
+      build:
+        context: ./shared-components/vue-library
+        dockerfile: Dockerfile
+      networks:
+        - shop-network
+    main-api:
+      container_name: main-api
+      build: 
+        context: ./main-api
+        dockerfile: Dockerfile
+      expose:
+        - "80"
+      networks:
+        - shop-network
+      environment:
+        - ASPNETCORE_URLS=http://+:80
+        - ASPNETCORE_ENVIRONMENT=Development
+
+    cart-app:
+      container_name: cart-app
+      build:
+        context: ./cart-app
+        dockerfile: Dockerfile
+      expose:
+        - "80"
+      networks:
+        - shop-network
+      environment:
+        - ASPNETCORE_URLS=http://+:80
+        - ASPNETCORE_ENVIRONMENT=Development
+
+    products-app:
+      container_name: products-app
+      build:
+        context: ./products-app
+        dockerfile: Dockerfile
+      expose:
+        - "80"
+      networks:
+        - shop-network
+      environment:
+        - ASPNETCORE_URLS=http://+:80
+        - ASPNETCORE_ENVIRONMENT=Development
+
+    nginx:
+      container_name: nginx
+      image: nginx:alpine
+      ports:
+        - "80:80"
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      depends_on:
+        - main-api
+        - cart-app
+        - products-app
+      networks:
+        - shop-network
+
+  networks:
+    shop-network:
+      name: shop-network
+      driver: bridge

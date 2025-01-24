@@ -1,0 +1,14 @@
+.App {
+  padding: 24px;
+}
+
+.cart-items {
+  margin-top: 20px;
+}
+
+.App-header {
+  background-color: #282c34;
+  border-radius: 8px;
+  padding: 32px;
+  color: white;
+}

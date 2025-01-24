@@ -1,0 +1,31 @@
+{
+  "name": "@company/shared-components",
+  "version": "1.0.0",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/shared-components.umd.js",
+  "module": "./dist/shared-components.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/shared-components.es.js",
+      "require": "./dist/shared-components.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4",
+    "pinia": "^2.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.9"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4",
+    "pinia": "^2.1.6"
+  }
+}
