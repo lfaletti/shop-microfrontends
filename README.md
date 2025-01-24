@@ -104,4 +104,9 @@ This command will build the Docker images for each service defined in the docker
 - nginx: Acts as a reverse proxy to route requests to the appropriate services.
 - (still To be done) shared-components: Contains shared components used by other microfrontends.
 
+# References
 
+- Microfrontends fundamentals: https://martinfowler.com/articles/micro-frontends.html
+- Tools:
+    - https://lit.dev/
+    - https://vite.dev/
